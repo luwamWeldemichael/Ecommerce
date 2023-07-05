@@ -1,0 +1,11 @@
+::ng-deep #product_0,::ng-deep #product_1,::ng-deep #product_2 {
+  max-width: 400px;
+  background-color: lightgray;
+}
+
+::ng-deep app-product {
+  display: grid;
+  grid-template-columns:
+  repeat(3, 1fr);
+  grid-gap: 30px
+}

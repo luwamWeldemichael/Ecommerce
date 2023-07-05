@@ -1,0 +1,7 @@
+.menu-bar {
+  flex: 1 1 auto;
+}
+
+.app-menu-bar {
+  background-color: purple;
+}

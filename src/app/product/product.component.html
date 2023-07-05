@@ -1,0 +1,13 @@
+<ng-container *ngFor="let product of products; index as index">
+  <mat-card class="product" id="product_{{index}}">
+    <mat-card-header>
+      <mat-card-title>Name: {{product.name}}</mat-card-title>
+      <mat-card-subtitle>Price: {{product.price}}</mat-card-subtitle>
+      <mat-card-subtitle *ngIf="product.description">Description: {{product.description}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions align="end">
+      <button [disabled]="isAddToCartDisabled(product.description)" id="addToCartButton" mat-raised-button color="primary">Add to Cart</button>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>
+
