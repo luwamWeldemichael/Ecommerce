@@ -10,7 +10,7 @@ export class ProductsService {
 
   baseUrl: string = "http://localhost:8080/products";
   private triggerProductSavedLog  : Subject<string> = new Subject();
-  
+
   // products: Product[] = [
   //   {id: '1', name: 'Laptop', price: 111.3},
   //   {id: '2', name: 'Tablet', price: 90, description: 'It is tab generation 1'},
@@ -36,5 +36,8 @@ export class ProductsService {
   }
   deleteProduct(id : number) : Observable<string>{
     return this.http.delete<string>(`${this.baseUrl}/`+ id);
+  }
+  updateProduct(product : Product) : Observable<String>{
+    return this.http.put<string>(this.baseUrl, product);
   }
 }
