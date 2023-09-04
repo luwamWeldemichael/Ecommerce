@@ -11,12 +11,18 @@ import { ProductsComponent } from './products/products/products.component';
 import {MatCardModule} from "@angular/material/card";
 import { AppRoutingModule } from './app-routing.module';
 import {ProductComponent} from "./product/product.component";
+import { AddProductComponent } from './product/add-product/add-product.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EditProductComponent } from './product/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
-    ProductComponent
+    ProductComponent,
+    AddProductComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
@@ -25,9 +31,11 @@ import {ProductComponent} from "./product/product.component";
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [ProductsService],
+  providers: [ProductsService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
