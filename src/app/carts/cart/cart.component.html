@@ -1,0 +1,136 @@
+<!--<ng-container *ngFor="let item of cartItems; let i = index">-->
+<!--  &lt;!&ndash;  <mat-card class="product" id="product_{{i}}">&ndash;&gt;-->
+<!--  &lt;!&ndash;    <mat-card-header>&ndash;&gt;-->
+<!--  &lt;!&ndash;      <mat-card-title>Name: {{item.product.name}}</mat-card-title>&ndash;&gt;-->
+<!--  &lt;!&ndash;      <mat-card-subtitle>Price: {{item.product.price}}</mat-card-subtitle>&ndash;&gt;-->
+<!--  &lt;!&ndash;      <mat-card-subtitle *ngIf="item.description">Description: {{item.product.description}}</mat-card-subtitle>&ndash;&gt;-->
+<!--  &lt;!&ndash;      <mat-card-subtitle>Quantity: {{item.quantity}}</mat-card-subtitle>&ndash;&gt;-->
+<!--  &lt;!&ndash;    </mat-card-header>&ndash;&gt;-->
+<!--  &lt;!&ndash;    <mat-card-actions>&ndash;&gt;-->
+<!--  &lt;!&ndash;      <button id="deleteProduct" mat-raised-button color="primary" (click)="removeFromCart(i)">Remove From Cart&ndash;&gt;-->
+<!--  &lt;!&ndash;      </button>&ndash;&gt;-->
+<!--  &lt;!&ndash;    </mat-card-actions>&ndash;&gt;-->
+<!--  <div class='checkout-container'>-->
+<!--    <div class='checkout-header'>-->
+<!--      <div class='header-block'>-->
+<!--        <span>Product</span>-->
+<!--      </div>-->
+<!--      <div class='header-block'>-->
+<!--        <span>Description</span>-->
+<!--      </div>-->
+<!--      <div class='header-block'>-->
+<!--        <span>Quantity</span>-->
+<!--      </div>-->
+<!--      <div class='header-block'>-->
+<!--        <span>Product</span>-->
+<!--      </div>-->
+<!--      <div class='header-block'>-->
+<!--        <span>Price</span>-->
+<!--      </div>-->
+<!--      <div class='header-block'>-->
+<!--        <span>Remove</span>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;    {cartItems.map((cartItem) => {&ndash;&gt;-->
+<!--    &lt;!&ndash;    return (&ndash;&gt;-->
+<!--    &lt;!&ndash;    <CheckoutItem key={cartItem.id} cartItem={cartItem} />&ndash;&gt;-->
+<!--    &lt;!&ndash;    );&ndash;&gt;-->
+<!--    &lt;!&ndash;    })}&ndash;&gt;-->
+<!--    <span className='total'>Total</span>-->
+<!--  </div>-->
+<!--  <div class='checkout-item-container'>-->
+<!--    &lt;!&ndash;  <div className='image-container'>&ndash;&gt;-->
+<!--    &lt;!&ndash;    <img src={imageUrl} alt={`${name}`} />&ndash;&gt;-->
+<!--    &lt;!&ndash;  </div>&ndash;&gt;-->
+<!--    <span class='name'> {{item.product.name}}</span>-->
+<!--    <span class='quantity'>-->
+<!--                <div class='arrow' (click)="removeFromCart(i)">-->
+<!--                    &#10094;-->
+<!--                </div>-->
+<!--                <span class='value'>{{item.quantity}}</span>-->
+<!--                <div class='arrow' onClick={addItemHandler}>-->
+<!--                    &#10095;-->
+<!--                </div>-->
+<!--            </span>-->
+<!--    <span class='price'> {{item.product.price}}</span>-->
+<!--    <div class='remove-button' onClick={clearItemHandler}>-->
+<!--      &#10005;-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  &lt;!&ndash;  </mat-card>&ndash;&gt;-->
+<!--</ng-container>-->
+
+<!--<div class="checkout-container">-->
+<!--  <div class="checkout-header">-->
+<!--    <div class="header-block">-->
+<!--      <span>Product</span>-->
+<!--    </div>-->
+<!--    <div class="header-block">-->
+<!--      <span>Description</span>-->
+<!--    </div>-->
+<!--    <div class="header-block">-->
+<!--      <span>Quantity</span>-->
+<!--    </div>-->
+<!--    <div class="header-block">-->
+<!--      <span>Price</span>-->
+<!--    </div>-->
+<!--    <div class="header-block">-->
+<!--      <span>Remove</span>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <ng-container *ngFor="let item of cartItems; let i = index">-->
+<!--    <div class="checkout-item-container">-->
+<!--      <div class="product-info">-->
+<!--        <div class="name">{{ item.product.name }}</div>-->
+<!--        <div class="description">{{ item.product.description }}</div>-->
+<!--      </div>-->
+<!--      <div class="quantity">-->
+<!--        <div class="arrow" (click)="decrementQuantity(item)">-</div>-->
+<!--        <span class="value">{{ item.quantity }}</span>-->
+<!--        <div class="arrow" (click)="incrementQuantity(item)">+</div>-->
+<!--      </div>-->
+<!--      <div class="price">{{ item.totalPrice }}</div>-->
+<!--      <div class="remove-button" (click)="removeFromCart(i)">&#10005;</div>-->
+<!--    </div>-->
+<!--  </ng-container>-->
+<!--</div>-->
+
+<div class="checkout-container">
+  <div class="checkout-header">
+    <div class="header-block">
+      <span>Product</span>
+    </div>
+    <div class="header-block">
+      <span>Description</span>
+    </div>
+    <div class="header-block">
+      <span>Quantity</span>
+    </div>
+    <div class="header-block">
+      <span>Price</span>
+    </div>
+    <div class="header-block">
+      <span>Remove</span>
+    </div>
+  </div>
+
+  <ng-container *ngFor="let item of cartItems; let i = index">
+    <div class="checkout-item-container">
+      <div class="item-info">
+        <div class="name">{{ item.product.name }}</div>
+        <div class="description">{{ item.product.description }}</div>
+      </div>
+      <div class="quantity">
+        <div class="arrow" (click)="decrementQuantity(item)">-</div>
+        <span class="value">{{ item.quantity }}</span>
+        <div class="arrow" (click)="incrementQuantity(item)">+</div>
+      </div>
+      <div class="price">{{ item.totalPrice }}</div>
+      <div class="remove-button" (click)="removeFromCart(i)">&#10005;</div>
+    </div>
+  </ng-container>
+</div>
+
+
+

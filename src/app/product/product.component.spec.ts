@@ -20,4 +20,10 @@ describe('ProductComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should delete product', (done: DoneFn) => {
+    // component.deleteProduct(any).then(()=>{
+    //   expect()
+    // })
+  })
 });

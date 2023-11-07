@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Product} from "../model/Product";
+import { CartService } from '../services/cartService/cart.service';
 import {ProductsService} from '../services/products.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class ProductComponent {
   @Input() products: Product[] = [];
 
 
-  constructor(private productsService: ProductsService) {
+  constructor(private productsService: ProductsService, private cartService : CartService) {
   }
 
   isAddToCartDisabled(description: any): boolean {
@@ -27,5 +28,9 @@ export class ProductComponent {
         console.log('error', this.products);
       });
 
+  }
+
+  addToCart(product : Product) {
+    this.cartService.addToCart(product);
   }
 }
