@@ -8,13 +8,11 @@
     <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
       <mat-icon>favorite</mat-icon>
     </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>shopping_cart</mat-icon>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" routerLink="/cart">
+      <mat-icon>shopping_cart</mat-icon>
+      <span class="cart-item-count">{{ cartItemsCount }}</span>
     </button>
   </mat-toolbar>
 </p>
 <router-outlet></router-outlet>
 
-<!--TODO
-router-outlet
--->
