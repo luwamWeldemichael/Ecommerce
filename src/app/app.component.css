@@ -5,3 +5,19 @@
 .app-menu-bar {
   background-color: purple;
 }
+
+.example-icon {
+  position: relative;
+  font-size: 24px; /* Adjust the icon size as needed */
+}
+
+.cart-item-count {
+  position: absolute;
+  top: -4px; /* Adjust the top position as needed */
+  right: -4px; /* Adjust the right position as needed */
+  background-color: palegoldenrod; /* Background color for the item count */
+  color: black; /* Text color for the item count */
+  border-radius: 50%; /* Rounded shape for the item count background */
+  padding: 4px 6px; /* Adjust the padding for the desired size */
+  font-size: 12px; /* Adjust the font size as needed */
+}

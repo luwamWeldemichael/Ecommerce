@@ -14,27 +14,15 @@ export class CartComponent {
     this.cartItems = this.cartService.getCartItems();
   }
 
-  removeFromCart(index: number) {
-    const item = this.cartItems[index];
-    if (item.quantity > 1) {
-      item.quantity--;
-    } else {
-      this.cartItems.splice(index, 1);
-    }
+  removeFromCart(item: any, index: number) {
+    this.cartService.removeFromCart(item, index);
   }
 
-  decrementQuantity(item: any) {
-    if (item.quantity > 1) {
-      item.quantity--;
-      item.totalPrice = item.quantity * item.product.price;
-    }
-    else {
-      this.removeFromCart(item.product.id);
-    }
+  decrementQuantity(item: any, index: number) {
+    this.cartService.decrementQuantity(item, index);
   }
 
   incrementQuantity(item: any) {
-    item.quantity++;
-    item.totalPrice = item.quantity * item.product.price;
+    this.cartService.incrementQuantity(item);
   }
 }

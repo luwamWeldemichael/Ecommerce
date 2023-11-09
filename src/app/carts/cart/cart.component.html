@@ -122,12 +122,12 @@
         <div class="description">{{ item.product.description }}</div>
       </div>
       <div class="quantity">
-        <div class="arrow" (click)="decrementQuantity(item)">-</div>
+        <div class="arrow" (click)="decrementQuantity(item, i)">-</div>
         <span class="value">{{ item.quantity }}</span>
         <div class="arrow" (click)="incrementQuantity(item)">+</div>
       </div>
       <div class="price">{{ item.totalPrice }}</div>
-      <div class="remove-button" (click)="removeFromCart(i)">&#10005;</div>
+      <div class="remove-button" (click)="removeFromCart(item, i)">&#10005;</div>
     </div>
   </ng-container>
 </div>
