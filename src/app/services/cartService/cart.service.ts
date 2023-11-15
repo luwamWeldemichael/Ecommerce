@@ -7,7 +7,7 @@ import {Product} from 'src/app/model/Product';
 })
 export class CartService {
   private cartItems: { product: any; quantity: number; totalPrice: number }[] = [];
-  private cartCount: number = 0;
+  public cartCount: number = 0;
   cartCountSubject: Subject<number> = new Subject<number>();
 
   getCartItems(): { product: any; quantity: number }[] {
@@ -40,13 +40,13 @@ export class CartService {
   }
 
   decrementQuantity(item: any, index: number) {
-    this.cartCount--;
-    this.cartCountSubject.next(this.cartCount)
     if (item.quantity > 1) {
       item.quantity--;
       item.totalPrice = item.quantity * item.product.price;
+      this.cartCount--;
+      this.cartCountSubject.next(this.cartCount)
     } else {
-      this.removeFromCart(item.product.id, index);
+      this.removeFromCart(item, index);
     }
   }
 

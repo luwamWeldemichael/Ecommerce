@@ -1,6 +1,6 @@
 ::ng-deep #product_0,::ng-deep #product_1,::ng-deep #product_2 {
-  max-width: 400px;
-  background-color: lightgray;
+  /*max-width: 400px;*/
+  /*background-color: lightgray;*/
 }
 
 ::ng-deep app-product {
