@@ -1,27 +1,20 @@
-<button [routerLink]="['/addProduct']" color="primary" id="addProductButton" mat-raised-button>Navigate to Add Product
-</button>
-<ng-container *ngFor="let product of products; index as index">
+<div class="search">
+  <i class="fas fa-search"></i>
+  <input #search type="text" placeholder="Search..." (keyup.enter)="inputChange(search.value)" />
+</div>
+<!--(input)="inputChange($event)"-->
+
+<ng-container *ngFor="let product of filteredProducts; index as index">
   <mat-card class="product" id="product_{{index}}">
     <mat-card-header>
       <mat-card-title>Name: {{product.name}}</mat-card-title>
       <mat-card-subtitle>Price: {{product.price}}</mat-card-subtitle>
       <mat-card-subtitle *ngIf="product.description">Description: {{product.description}}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-actions>
+    <mat-card-actions class="button-container">
       <button id="edit" mat-raised-button color="primary" [routerLink]="['/edit', product]">Edit</button>
-    </mat-card-actions>
-    <mat-card-actions align="end">
-<!--      <button [disabled]="isAddToCartDisabled(product.description)" id="addToCartButton" mat-raised-button-->
-<!--              color="primary">Add to Cart-->
-<!--      </button>-->
-      <button (click)="addToCart(product)" id="addToCart" mat-raised-button
-              color="primary">Add to Cart
-      </button>
-    </mat-card-actions>
-    <mat-card-actions>
-      <button id="deleteProduct" mat-raised-button color="primary" (click)="deleteProduct(product.id)">Delete Product
-      </button>
+      <button (click)="addToCart(product)" id="addToCart" mat-raised-button color="primary">Add to Cart</button>
+      <button id="deleteProduct" mat-raised-button color="primary" (click)="deleteProduct(product.id)">Delete</button>
     </mat-card-actions>
   </mat-card>
 </ng-container>
-

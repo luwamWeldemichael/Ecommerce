@@ -2,6 +2,10 @@
   flex: 1 1 auto;
 }
 
+.navigation {
+  cursor: pointer;
+}
+
 .app-menu-bar {
   background-color: purple;
 }

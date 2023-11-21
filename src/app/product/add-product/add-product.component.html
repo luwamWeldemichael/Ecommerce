@@ -1,17 +1,17 @@
-<div [formGroup]="productForm">
-  <div>
+<div [formGroup]="productForm" class="product-form">
+  <div class="form-group">
     <label for="id">ID:</label>
     <input type="text" id="id" formControlName="id" />
   </div>
-  <div>
+  <div class="form-group">
     <label for="name">Name:</label>
     <input type="text" id="name" formControlName="name" />
   </div>
-  <div>
+  <div class="form-group">
     <label for="description">Description:</label>
     <textarea id="description" formControlName="description"></textarea>
   </div>
-  <div>
+  <div class="form-group">
     <label for="price">Price:</label>
     <input type="number" id="price" formControlName="price" />
   </div>

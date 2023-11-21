@@ -8,9 +8,10 @@ import {CartService} from 'src/app/services/cartService/cart.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent {
+  headers = ["Product", "Description", "Quantity", "Price", "Remove"]
   cartItems: any[] = [];
 
-  constructor(private cartService: CartService) {
+  constructor(public cartService: CartService) {
     this.cartItems = this.cartService.getCartItems();
   }
 
@@ -24,5 +25,13 @@ export class CartComponent {
 
   incrementQuantity(item: any) {
     this.cartService.incrementQuantity(item);
+  }
+
+  calculateTotal(): number {
+    let totalPrice =0;
+    this.cartItems.forEach(item => {
+      totalPrice+= item.totalPrice;
+    })
+    return totalPrice;
   }
 }
