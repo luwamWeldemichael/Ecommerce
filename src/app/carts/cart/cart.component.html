@@ -22,6 +22,6 @@
   </div>
 </div>
 <div *ngIf="cartService.cartCount">
-  <button class="checkout-button" mat-raised-button color="primary">Continue to Checkout</button>
+  <button class="checkout-button" mat-raised-button color="primary" (click)="checkout()">Continue to Checkout</button>
 </div>
 

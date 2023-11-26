@@ -6,7 +6,7 @@ import {Product} from 'src/app/model/Product';
   providedIn: 'root'
 })
 export class CartService {
-  private cartItems: { product: any; quantity: number; totalPrice: number }[] = [];
+  private cartItems: { product: Product; quantity: number; totalPrice: number }[] = [];
   public cartCount: number = 0;
   cartCountSubject: Subject<number> = new Subject<number>();
 

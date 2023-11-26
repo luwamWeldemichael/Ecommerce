@@ -39,11 +39,29 @@ then an order is placed
 and product is removed from cart
 and I see a success banner with a message with a message "order placed successfully".
 
+When I click checkout
+Then I am able to checkout the shopping cart items
+And I get confirmation that an order is made
+
 //8th
 Given I am a user
 When I navigate to the Products Page
 Then I see a search field on the top navigation bar
 And I can search(filter) the products by text
+Given I am a user on the shopping cart page
+
+//9th
+Given I am a user
+When I navigate to the ecommerce application
+Then I see a myOrder in the Navigation menu
+
+//10th
+Given I am a user
+When I navigate to the ecommerce application
+And I click myOrder
+Then I see the list of Items that I ordered
+And a stepper showing the progress of my order status
+
 
 # ECommerce
 
