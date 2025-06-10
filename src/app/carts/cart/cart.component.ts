@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 import {Order} from 'src/app/model/Order';
-import { OrderItem } from 'src/app/model/OrderItem';
+import {OrderItem} from 'src/app/model/OrderItem';
 import {Product} from 'src/app/model/Product';
 import {CartService} from 'src/app/services/cartService/cart.service';
 import {OrderService} from 'src/app/services/orderService/order.service';
@@ -40,7 +40,7 @@ export class CartComponent {
   }
 
   checkout() {
-    const orderItems : OrderItem[] = [];
+    const orderItems: OrderItem[] = [];
     this.cartItems.forEach(item => {
       orderItems.push({
         productId: item.product.id,
@@ -48,11 +48,15 @@ export class CartComponent {
         subtotal: item.totalPrice
       })
     });
-    const order: Order = {orderItems : orderItems};
-    this.orderService.createOrder(order).subscribe(data => {
-      this.cartItems = [];
-      console.log(data);
-      this.router.navigateByUrl("/orders")
-    });
+    const order: Order = {orderItems: orderItems};
+    this.orderService.createOrder(order).subscribe((data) => {
+        console.log('Data received:', data);
+        this.cartService.clearCartItems();
+        this.cartService.cartCountSubject.next(0);
+        this.router.navigateByUrl("/products")
+      },
+      (error) => {
+        console.error('Errorxxxxxxx:', error);
+      });
   }
 }

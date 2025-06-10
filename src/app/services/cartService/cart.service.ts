@@ -6,18 +6,22 @@ import {Product} from 'src/app/model/Product';
   providedIn: 'root'
 })
 export class CartService {
-  private cartItems: { product: Product; quantity: number; totalPrice: number }[] = [];
+  private _cartItems: { product: Product; quantity: number; totalPrice: number }[] = [];
   public cartCount: number = 0;
   cartCountSubject: Subject<number> = new Subject<number>();
 
   getCartItems(): { product: any; quantity: number }[] {
-    return this.cartItems;
+    return this._cartItems;
+  }
+
+  clearCartItems() {
+    this._cartItems = [];
   }
 
   addToCart(product: any) {
     this.cartCount++;
     this.cartCountSubject.next(this.cartCount);
-    const existingCartItem = this.cartItems.find((item) => item.product === product);
+    const existingCartItem = this._cartItems.find((item) => item.product === product);
 
     if (existingCartItem) {
       existingCartItem.quantity++;
@@ -28,13 +32,13 @@ export class CartService {
         quantity: 1,
         totalPrice: product.price,
       };
-      this.cartItems.push(newCartItem);
+      this._cartItems.push(newCartItem);
     }
   }
 
   removeFromCart(item: any, index: number) {
     const itemCount = item.quantity;
-    this.cartItems.splice(index, 1);
+    this._cartItems.splice(index, 1);
     this.cartCount = this.cartCount - itemCount;
     this.cartCountSubject.next(this.cartCount);
   }
@@ -51,9 +55,13 @@ export class CartService {
   }
 
   incrementQuantity(item: any) {
-    this.cartCount++;
-    this.cartCountSubject.next(this.cartCount)
-    item.quantity++;
-    item.totalPrice = item.quantity * item.product.price;
+    if (item.product.quantity > item.quantity) {
+      this.cartCount++;
+      this.cartCountSubject.next(this.cartCount)
+      item.quantity++;
+      item.totalPrice = item.quantity * item.product.price;
+    }
   }
+
+
 }

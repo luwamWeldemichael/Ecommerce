@@ -1,1 +1,21 @@
-<p>orders works!</p>
+<p>
+  My Orders
+</p>
+<ng-container *ngFor="let order of orders;">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Name: {{ order }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <ul>
+        <li *ngFor="let orderItem of order.orderItems">
+          Product: {{ orderItem.productId }} |
+          Quantity: {{ orderItem.quantity }} |
+          Subtotal: {{ orderItem.subtotal}}
+        </li>
+      </ul>
+    </mat-card-content>
+    <mat-card-actions class="button-container">
+    </mat-card-actions>
+  </mat-card>
+</ng-container>

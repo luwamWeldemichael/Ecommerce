@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {Product} from "../model/Product";
 
 @Injectable({
@@ -9,7 +9,7 @@ import {Product} from "../model/Product";
 export class ProductsService {
 
   baseUrl: string = "http://localhost:8080/products";
-  private triggerProductSavedLog  : Subject<string> = new Subject();
+  private triggerProductSavedLog: Subject<string> = new Subject();
 
   // products: Product[] = [
   //   {id: '1', name: 'Laptop', price: 111.3},
@@ -20,24 +20,28 @@ export class ProductsService {
   constructor(private http: HttpClient) {
   }
 
-  getTriggerProductSavedLog() : Subject<string>{
+  getTriggerProductSavedLog(): Subject<string> {
     return this.triggerProductSavedLog;
   }
 
-  getAllProducts() : Observable<Product[]>{
-    return this.http.get<Product[]>(this.baseUrl);
+  getAllProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.baseUrl + "/available");
   }
-  getProduct(id: number) : Observable<Product>{
-    return this.http.get<Product>(`${this.baseUrl}/`+ id );
+
+  getProduct(id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.baseUrl}/` + id);
   }
-  saveProduct(product : Product) : Observable<Product>{
+
+  saveProduct(product: Product): Observable<Product> {
     this.triggerProductSavedLog.next("Product saved");
     return this.http.post<Product>(this.baseUrl, product);
   }
-  deleteProduct(id : number) : Observable<string>{
-    return this.http.delete<string>(`${this.baseUrl}/`+ id);
+
+  deleteProduct(id: number): Observable<string> {
+    return this.http.delete<string>(`${this.baseUrl}/` + id);
   }
-  updateProduct(product : Product) : Observable<String>{
+
+  updateProduct(product: Product): Observable<String> {
     return this.http.put<string>(this.baseUrl, product);
   }
 }
