@@ -61,6 +61,12 @@ When I navigate to the ecommerce application
 And I click myOrder
 Then I see the list of Items that I ordered
 And a stepper showing the progress of my order status
+##### add a quantity attribute to a product .... then when you are retrieving products in the get all products (make the query like get all products where quantity > 0)
+#### Then the user will see only available products in the frontend ... 
+#### they can only add quantity of a product in the cart if in the range of the product quantity
+#### when you create an order right after you save the order in the order service, call an update to method in the product service to update the product quantity 
+#### (annotate the save method in the orderService by @Transactional)
+### That way you make sure if the order is saved and therefore the quantity of the product is decreased .....
 
 
 # ECommerce
